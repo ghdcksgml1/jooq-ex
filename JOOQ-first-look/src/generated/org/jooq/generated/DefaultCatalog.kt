@@ -27,10 +27,10 @@ open class DefaultCatalog : CatalogImpl("") {
     /**
      * The schema <code>sakila</code>.
      */
-    val SAKILA: JSakila get(): JSakila = JSakila.SAKILA
+    val SAKILA: KSakila get(): KSakila = KSakila.SAKILA
 
     override fun getSchemas(): List<Schema> = listOf(
-        JSakila.SAKILA
+        KSakila.SAKILA
     )
 
     /**

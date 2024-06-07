@@ -1,3 +1,5 @@
+import org.jooq.meta.jaxb.ForcedType
+
 plugins {
     id("org.springframework.boot") version "3.3.0"
     id("io.spring.dependency-management") version "1.1.5"
@@ -29,7 +31,6 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-    jooqGenerator("com.mysql:mysql-connector-j")
     jooqGenerator("org.jooq:jooq")
     jooqGenerator("org.jooq:jooq-meta")
     jooqGenerator(project(":JOOQ-custom"))
@@ -65,6 +66,24 @@ jooq {
                     database.apply {
                         name = "org.jooq.meta.mysql.MySQLDatabase"
                         inputSchema = "sakila"
+                        isUnsignedTypes = true
+
+                        forcedTypes.addAll(
+                                listOf(
+                                        ForcedType().apply {
+                                            userType = "java.lang.Long"
+                                            includeTypes = "int unsigned"
+                                        },
+                                        ForcedType().apply {
+                                            userType = "java.lang.Integer"
+                                            includeTypes = "tinyint unsigned"
+                                        },
+                                        ForcedType().apply {
+                                            userType = "java.lang.Integer"
+                                            includeTypes = "smallint unsigned"
+                                        }
+                                )
+                        )
                     }
                     generate.apply {
                         isDaos = true

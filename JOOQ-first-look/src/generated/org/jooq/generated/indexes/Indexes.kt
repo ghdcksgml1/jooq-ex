@@ -5,18 +5,18 @@ package org.jooq.generated.indexes
 
 
 import org.jooq.Index
-import org.jooq.generated.tables.JActor
-import org.jooq.generated.tables.JAddress
-import org.jooq.generated.tables.JCity
-import org.jooq.generated.tables.JCustomer
-import org.jooq.generated.tables.JFilm
-import org.jooq.generated.tables.JFilmActor
-import org.jooq.generated.tables.JFilmText
-import org.jooq.generated.tables.JInventory
-import org.jooq.generated.tables.JPayment
-import org.jooq.generated.tables.JRental
-import org.jooq.generated.tables.JStaff
-import org.jooq.generated.tables.JStore
+import org.jooq.generated.tables.KActor
+import org.jooq.generated.tables.KAddress
+import org.jooq.generated.tables.KCity
+import org.jooq.generated.tables.KCustomer
+import org.jooq.generated.tables.KFilm
+import org.jooq.generated.tables.KFilmActor
+import org.jooq.generated.tables.KFilmText
+import org.jooq.generated.tables.KInventory
+import org.jooq.generated.tables.KPayment
+import org.jooq.generated.tables.KRental
+import org.jooq.generated.tables.KStaff
+import org.jooq.generated.tables.KStore
 import org.jooq.impl.DSL
 import org.jooq.impl.Internal
 
@@ -26,24 +26,24 @@ import org.jooq.impl.Internal
 // INDEX definitions
 // -------------------------------------------------------------------------
 
-val ACTOR_IDX_ACTOR_LAST_NAME: Index = Internal.createIndex(DSL.name("idx_actor_last_name"), JActor.ACTOR, arrayOf(JActor.ACTOR.LAST_NAME), false)
-val CUSTOMER_IDX_FK_ADDRESS_ID: Index = Internal.createIndex(DSL.name("idx_fk_address_id"), JCustomer.CUSTOMER, arrayOf(JCustomer.CUSTOMER.ADDRESS_ID), false)
-val STAFF_IDX_FK_ADDRESS_ID: Index = Internal.createIndex(DSL.name("idx_fk_address_id"), JStaff.STAFF, arrayOf(JStaff.STAFF.ADDRESS_ID), false)
-val STORE_IDX_FK_ADDRESS_ID: Index = Internal.createIndex(DSL.name("idx_fk_address_id"), JStore.STORE, arrayOf(JStore.STORE.ADDRESS_ID), false)
-val ADDRESS_IDX_FK_CITY_ID: Index = Internal.createIndex(DSL.name("idx_fk_city_id"), JAddress.ADDRESS, arrayOf(JAddress.ADDRESS.CITY_ID), false)
-val CITY_IDX_FK_COUNTRY_ID: Index = Internal.createIndex(DSL.name("idx_fk_country_id"), JCity.CITY, arrayOf(JCity.CITY.COUNTRY_ID), false)
-val PAYMENT_IDX_FK_CUSTOMER_ID: Index = Internal.createIndex(DSL.name("idx_fk_customer_id"), JPayment.PAYMENT, arrayOf(JPayment.PAYMENT.CUSTOMER_ID), false)
-val RENTAL_IDX_FK_CUSTOMER_ID: Index = Internal.createIndex(DSL.name("idx_fk_customer_id"), JRental.RENTAL, arrayOf(JRental.RENTAL.CUSTOMER_ID), false)
-val FILM_ACTOR_IDX_FK_FILM_ID: Index = Internal.createIndex(DSL.name("idx_fk_film_id"), JFilmActor.FILM_ACTOR, arrayOf(JFilmActor.FILM_ACTOR.FILM_ID), false)
-val INVENTORY_IDX_FK_FILM_ID: Index = Internal.createIndex(DSL.name("idx_fk_film_id"), JInventory.INVENTORY, arrayOf(JInventory.INVENTORY.FILM_ID), false)
-val RENTAL_IDX_FK_INVENTORY_ID: Index = Internal.createIndex(DSL.name("idx_fk_inventory_id"), JRental.RENTAL, arrayOf(JRental.RENTAL.INVENTORY_ID), false)
-val FILM_IDX_FK_LANGUAGE_ID: Index = Internal.createIndex(DSL.name("idx_fk_language_id"), JFilm.FILM, arrayOf(JFilm.FILM.LANGUAGE_ID), false)
-val FILM_IDX_FK_ORIGINAL_LANGUAGE_ID: Index = Internal.createIndex(DSL.name("idx_fk_original_language_id"), JFilm.FILM, arrayOf(JFilm.FILM.ORIGINAL_LANGUAGE_ID), false)
-val PAYMENT_IDX_FK_STAFF_ID: Index = Internal.createIndex(DSL.name("idx_fk_staff_id"), JPayment.PAYMENT, arrayOf(JPayment.PAYMENT.STAFF_ID), false)
-val RENTAL_IDX_FK_STAFF_ID: Index = Internal.createIndex(DSL.name("idx_fk_staff_id"), JRental.RENTAL, arrayOf(JRental.RENTAL.STAFF_ID), false)
-val CUSTOMER_IDX_FK_STORE_ID: Index = Internal.createIndex(DSL.name("idx_fk_store_id"), JCustomer.CUSTOMER, arrayOf(JCustomer.CUSTOMER.STORE_ID), false)
-val STAFF_IDX_FK_STORE_ID: Index = Internal.createIndex(DSL.name("idx_fk_store_id"), JStaff.STAFF, arrayOf(JStaff.STAFF.STORE_ID), false)
-val CUSTOMER_IDX_LAST_NAME: Index = Internal.createIndex(DSL.name("idx_last_name"), JCustomer.CUSTOMER, arrayOf(JCustomer.CUSTOMER.LAST_NAME), false)
-val INVENTORY_IDX_STORE_ID_FILM_ID: Index = Internal.createIndex(DSL.name("idx_store_id_film_id"), JInventory.INVENTORY, arrayOf(JInventory.INVENTORY.STORE_ID, JInventory.INVENTORY.FILM_ID), false)
-val FILM_IDX_TITLE: Index = Internal.createIndex(DSL.name("idx_title"), JFilm.FILM, arrayOf(JFilm.FILM.TITLE), false)
-val FILM_TEXT_IDX_TITLE_DESCRIPTION: Index = Internal.createIndex(DSL.name("idx_title_description"), JFilmText.FILM_TEXT, arrayOf(JFilmText.FILM_TEXT.TITLE, JFilmText.FILM_TEXT.DESCRIPTION), false)
+val ACTOR_IDX_ACTOR_LAST_NAME: Index = Internal.createIndex(DSL.name("idx_actor_last_name"), KActor.ACTOR, arrayOf(KActor.ACTOR.LAST_NAME), false)
+val CUSTOMER_IDX_FK_ADDRESS_ID: Index = Internal.createIndex(DSL.name("idx_fk_address_id"), KCustomer.CUSTOMER, arrayOf(KCustomer.CUSTOMER.ADDRESS_ID), false)
+val STAFF_IDX_FK_ADDRESS_ID: Index = Internal.createIndex(DSL.name("idx_fk_address_id"), KStaff.STAFF, arrayOf(KStaff.STAFF.ADDRESS_ID), false)
+val STORE_IDX_FK_ADDRESS_ID: Index = Internal.createIndex(DSL.name("idx_fk_address_id"), KStore.STORE, arrayOf(KStore.STORE.ADDRESS_ID), false)
+val ADDRESS_IDX_FK_CITY_ID: Index = Internal.createIndex(DSL.name("idx_fk_city_id"), KAddress.ADDRESS, arrayOf(KAddress.ADDRESS.CITY_ID), false)
+val CITY_IDX_FK_COUNTRY_ID: Index = Internal.createIndex(DSL.name("idx_fk_country_id"), KCity.CITY, arrayOf(KCity.CITY.COUNTRY_ID), false)
+val PAYMENT_IDX_FK_CUSTOMER_ID: Index = Internal.createIndex(DSL.name("idx_fk_customer_id"), KPayment.PAYMENT, arrayOf(KPayment.PAYMENT.CUSTOMER_ID), false)
+val RENTAL_IDX_FK_CUSTOMER_ID: Index = Internal.createIndex(DSL.name("idx_fk_customer_id"), KRental.RENTAL, arrayOf(KRental.RENTAL.CUSTOMER_ID), false)
+val FILM_ACTOR_IDX_FK_FILM_ID: Index = Internal.createIndex(DSL.name("idx_fk_film_id"), KFilmActor.FILM_ACTOR, arrayOf(KFilmActor.FILM_ACTOR.FILM_ID), false)
+val INVENTORY_IDX_FK_FILM_ID: Index = Internal.createIndex(DSL.name("idx_fk_film_id"), KInventory.INVENTORY, arrayOf(KInventory.INVENTORY.FILM_ID), false)
+val RENTAL_IDX_FK_INVENTORY_ID: Index = Internal.createIndex(DSL.name("idx_fk_inventory_id"), KRental.RENTAL, arrayOf(KRental.RENTAL.INVENTORY_ID), false)
+val FILM_IDX_FK_LANGUAGE_ID: Index = Internal.createIndex(DSL.name("idx_fk_language_id"), KFilm.FILM, arrayOf(KFilm.FILM.LANGUAGE_ID), false)
+val FILM_IDX_FK_ORIGINAL_LANGUAGE_ID: Index = Internal.createIndex(DSL.name("idx_fk_original_language_id"), KFilm.FILM, arrayOf(KFilm.FILM.ORIGINAL_LANGUAGE_ID), false)
+val PAYMENT_IDX_FK_STAFF_ID: Index = Internal.createIndex(DSL.name("idx_fk_staff_id"), KPayment.PAYMENT, arrayOf(KPayment.PAYMENT.STAFF_ID), false)
+val RENTAL_IDX_FK_STAFF_ID: Index = Internal.createIndex(DSL.name("idx_fk_staff_id"), KRental.RENTAL, arrayOf(KRental.RENTAL.STAFF_ID), false)
+val CUSTOMER_IDX_FK_STORE_ID: Index = Internal.createIndex(DSL.name("idx_fk_store_id"), KCustomer.CUSTOMER, arrayOf(KCustomer.CUSTOMER.STORE_ID), false)
+val STAFF_IDX_FK_STORE_ID: Index = Internal.createIndex(DSL.name("idx_fk_store_id"), KStaff.STAFF, arrayOf(KStaff.STAFF.STORE_ID), false)
+val CUSTOMER_IDX_LAST_NAME: Index = Internal.createIndex(DSL.name("idx_last_name"), KCustomer.CUSTOMER, arrayOf(KCustomer.CUSTOMER.LAST_NAME), false)
+val INVENTORY_IDX_STORE_ID_FILM_ID: Index = Internal.createIndex(DSL.name("idx_store_id_film_id"), KInventory.INVENTORY, arrayOf(KInventory.INVENTORY.STORE_ID, KInventory.INVENTORY.FILM_ID), false)
+val FILM_IDX_TITLE: Index = Internal.createIndex(DSL.name("idx_title"), KFilm.FILM, arrayOf(KFilm.FILM.TITLE), false)
+val FILM_TEXT_IDX_TITLE_DESCRIPTION: Index = Internal.createIndex(DSL.name("idx_title_description"), KFilmText.FILM_TEXT, arrayOf(KFilmText.FILM_TEXT.TITLE, KFilmText.FILM_TEXT.DESCRIPTION), false)
