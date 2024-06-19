@@ -1,5 +1,6 @@
 package com.sight.JOOQ_first_look.film
 
+import com.sight.JOOQ_first_look.actor.ActorFilmographySearchOption
 import com.sight.JOOQ_first_look.actor.ActorRepository
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -58,5 +59,32 @@ class JooqConditionTest(
 
         // then
         assertThat(actorList).hasSizeGreaterThan(1)
+    }
+
+    @Test
+    fun `다중 조건 검색 - 배우 이름으로 조회`() {
+        // given
+        val searchOption = ActorFilmographySearchOption(actorName = "LOLLOBRIGIDA")
+
+        // when
+        val actorFilmographies = actorRepository.findActorFilmography(searchOption)
+
+        // then
+        assertThat(actorFilmographies).hasSize(1)
+    }
+
+    @Test
+    fun `다중 조건 검색 - 배우 이름과 영화 제목으로 조회`() {
+        // given
+        val searchOption = ActorFilmographySearchOption(
+                actorName = "LOLLOBRIGIDA",
+                filmTitle = "COMMANDMENTS EXPRESS"
+        )
+
+        // when
+        val actorFilmographies = actorRepository.findActorFilmography(searchOption)
+
+        // then
+        assertThat(actorFilmographies).hasSize(1)
     }
 }

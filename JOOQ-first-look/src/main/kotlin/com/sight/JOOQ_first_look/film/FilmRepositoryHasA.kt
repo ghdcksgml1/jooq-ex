@@ -7,8 +7,12 @@ import org.jooq.generated.tables.pojos.Film
 import org.jooq.generated.tables.references.ACTOR
 import org.jooq.generated.tables.references.FILM
 import org.jooq.generated.tables.references.FILM_ACTOR
+import org.jooq.generated.tables.references.INVENTORY
 import org.jooq.impl.DSL
+import org.jooq.impl.DSL.case_
+import org.jooq.impl.DSL.selectCount
 import org.springframework.stereotype.Repository
+import java.math.BigDecimal
 
 @Repository
 class FilmRepositoryHasA(
@@ -48,5 +52,23 @@ class FilmRepositoryHasA(
                 .offset((page - 1) * pageSize)
                 .limit(pageSize)
                 .fetchInto(FilmWithActor::class.java)
+    }
+
+    fun findFilmPriceSummaryByFilmTitle(filmTitle: String): List<FilmPriceSummary> {
+
+        return dslContext.select(
+                FILM.FILM_ID,
+                FILM.TITLE,
+                FILM.RENTAL_RATE,
+                case_()
+                        .`when`(FILM.RENTAL_RATE.le(BigDecimal.valueOf(1.0)), "Cheap")
+                        .`when`(FILM.RENTAL_RATE.le(BigDecimal.valueOf(3.0)), "Moderate")
+                        .else_("Expensive")
+                        .`as`(FilmPriceSummary::priceCategory.name),
+                selectCount().from(INVENTORY).where(INVENTORY.FILM_ID.eq(FILM.FILM_ID)).asField<Int>(FilmPriceSummary::totalInventory.name)
+        )
+                .from(FILM)
+                .where(FILM.TITLE.likeRegex(filmTitle))
+                .fetchInto(FilmPriceSummary::class.java)
     }
 }
