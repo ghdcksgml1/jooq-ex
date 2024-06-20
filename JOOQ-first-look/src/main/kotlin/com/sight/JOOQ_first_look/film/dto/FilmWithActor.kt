@@ -1,4 +1,4 @@
-package com.sight.JOOQ_first_look.film
+package com.sight.JOOQ_first_look.film.dto
 
 import org.jooq.generated.tables.pojos.Actor
 import org.jooq.generated.tables.pojos.Film

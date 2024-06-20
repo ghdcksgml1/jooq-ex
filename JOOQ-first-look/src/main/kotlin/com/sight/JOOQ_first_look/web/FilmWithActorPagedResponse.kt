@@ -1,6 +1,6 @@
 package com.sight.JOOQ_first_look.web
 
-import com.sight.JOOQ_first_look.film.FilmWithActor
+import com.sight.JOOQ_first_look.film.dto.FilmWithActor
 
 data class FilmWithActorPagedResponse(
         val pagedResponse: PagedResponse,

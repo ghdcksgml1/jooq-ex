@@ -1,4 +1,4 @@
-package com.sight.JOOQ_first_look.film
+package com.sight.JOOQ_first_look.film.dto
 
 data class SimpleFileInfo(
         val filmId: Long,

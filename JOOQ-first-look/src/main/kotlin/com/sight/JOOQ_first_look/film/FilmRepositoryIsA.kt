@@ -1,13 +1,13 @@
 package com.sight.JOOQ_first_look.film
 
+import com.sight.JOOQ_first_look.film.dto.FilmWithActor
+import com.sight.JOOQ_first_look.film.dto.SimpleFileInfo
 import org.jooq.Configuration
 import org.jooq.DSLContext
 import org.jooq.generated.tables.daos.FilmDao
-import org.jooq.generated.tables.pojos.Film
 import org.jooq.generated.tables.references.ACTOR
 import org.jooq.generated.tables.references.FILM
 import org.jooq.generated.tables.references.FILM_ACTOR
-import org.jooq.impl.DSL
 import org.springframework.stereotype.Repository
 
 @Repository

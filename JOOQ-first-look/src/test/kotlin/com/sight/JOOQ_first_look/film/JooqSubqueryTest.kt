@@ -1,5 +1,6 @@
 package com.sight.JOOQ_first_look.film
 
+import com.sight.JOOQ_first_look.film.dto.PriceCategory
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -28,12 +29,16 @@ class JooqSubqueryTest(
     @Test
     @DisplayName("평균 대여 기간이 가장 긴 영화부터 정렬해서 조회한다.")
     fun `from절 서브쿼리 인라인 뷰 예제`() {
+        val filmTitle = "EGG"
 
+        val filmRentalSummaryList = filmRepository.findFilmRentalSummaryByFilmTitle(filmTitle)
     }
 
     @Test
     @DisplayName("대여된 기록이 있는 영화가 있는 영화만 조회")
     fun `조건절 서브쿼리 예제`() {
+        val filmTitle = "EGG"
 
+        val filmList = filmRepository.findRentedFilmByTitle(filmTitle);
     }
 }
