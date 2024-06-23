@@ -1,6 +1,6 @@
 package com.sight.JOOQ_first_look.film
 
-import com.sight.JOOQ_first_look.actor.ActorFilmographySearchOption
+import com.sight.JOOQ_first_look.actor.dto.ActorFilmographySearchOption
 import com.sight.JOOQ_first_look.actor.ActorRepository
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
