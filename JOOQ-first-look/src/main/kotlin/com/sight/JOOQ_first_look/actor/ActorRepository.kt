@@ -134,14 +134,41 @@ class ActorRepository(
             .fetchOneInto(Actor::class.java)
     }
 
-    fun updateWithDto(newActorId: Long, request: ActorUpdateRequest) {
+    fun updateWithDto(newActorId: Long, request: ActorUpdateRequest): Int {
         val firstName = request.firstName?.let { DSL.`val`(request.firstName) } ?: DSL.noField(ACTOR.FIRST_NAME)
         val lastName = request.lastName?.let { DSL.`val`(request.lastName) } ?: DSL.noField(ACTOR.LAST_NAME)
 
-        dslContext.update(ACTOR)
+        return dslContext.update(ACTOR)
             .set(ACTOR.FIRST_NAME, firstName)
             .set(ACTOR.LAST_NAME, lastName)
             .where(ACTOR.ACTOR_ID.eq(newActorId))
             .execute()
+    }
+
+    fun updateWithRecord(newActorId: Long, request: ActorUpdateRequest): Int? {
+        val record = dslContext.fetchOne(ACTOR, ACTOR.ACTOR_ID.eq(newActorId))
+
+        request.firstName?.let { record!!.firstName = request.firstName }
+        request.lastName?.let { record!!.lastName = request.lastName }
+
+        return record?.store()
+    }
+
+    fun delete(newActorId: Long): Int {
+        return with(dslContext) {
+            deleteFrom(ACTOR)
+                .where(ACTOR.ACTOR_ID.eq(newActorId))
+                .execute()
+        }
+    }
+
+    fun deleteWithRecord(actor: Actor): Int? {
+        val record = dslContext.fetchOne(ACTOR, ACTOR.ACTOR_ID.eq(actor.actorId))
+        return record?.delete()
+    }
+
+    fun findRecordByActorId(actorId: Long): ActorRecord? {
+        val record = dslContext.fetchOne(ACTOR, ACTOR.ACTOR_ID.eq(actorId))
+        return record
     }
 }
